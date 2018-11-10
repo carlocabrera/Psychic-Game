@@ -7,7 +7,7 @@ let losses = 0;
 let guesses = 10;
 let guessed = 10;
 let chosenLetters = [];
-var letterToGuess = null;
+var letterGuess = null;
 
 // Random Letter Selection
 var chooseLetter = letterChoices[Math.floor(Math.random() * letterChoices.length)];
@@ -17,8 +17,8 @@ function updateguessed() {
     document.querySelector('#guessLeft').innerHTML = "Guesses left: " + guessed;
 };
 
-function updateLetterToGuess() {
-    this.letterToGuess = this.letterChoices[Math.floor(Math.random() * this.letterChoices.length)];
+function updateletterGuess() {
+    this.letterGuess = this.letterChoices[Math.floor(Math.random() * this.letterChoices.length)];
 };
 
 // Player's guessed letters
@@ -31,12 +31,12 @@ var reset = function() {
     guessed = 10;
     chosenLetters = [];
 
-    updateLetterToGuess();
+    updateletterGuess();
     updateguessed();
     updateGuessesSoFar();
 }
 
-updateLetterToGuess();
+updateletterGuess();
 updateguessed();
 
 // Player chooses letter
@@ -57,7 +57,7 @@ document.onkeyup = function(event) {
         updateGuessesSoFar();
 
         if (guessed > 0) {
-            if (userGuess == letterToGuess) {
+            if (userGuess == letterGuess) {
                 wins++;
                 
                 document.querySelector('#wins').innerHTML = "Wins: " + wins;
